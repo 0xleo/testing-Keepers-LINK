@@ -10,7 +10,7 @@ contract Counter is KeeperCompatibleInterface {
     uint public immutable interval = 60;
     uint public lastTimeStamp = block.timestamp;
 
-    function checkUpkeep(bytes calldata checkData) public pure override returns (bool upkeepNeeded, bytes memory performData) {
+    function checkUpkeep(bytes calldata checkData) public view override returns (bool upkeepNeeded, bytes memory performData) {
         upkeepNeeded = (block.timestamp - lastTimeStamp) > interval;
         performData = checkData;
     }
